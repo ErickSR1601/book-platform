@@ -1,0 +1,10 @@
+.back-button {
+  background: none;
+  border: none;
+  color: #4b2e2b;
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 0.9rem;
+  text-align: center;
+  padding: 0.5rem 0;
+}

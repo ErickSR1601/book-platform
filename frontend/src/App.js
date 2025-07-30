@@ -1,8 +1,11 @@
-import './App.css';
+import "./App.css";
+import AppRoutes from "./routes/AppRoutes";
 
 function App() {
   return (
-    <h1>Hola mundo</h1>
+    <div className="App">
+      <AppRoutes />
+    </div>
   );
 }
 
