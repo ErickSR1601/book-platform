@@ -1,0 +1,81 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: #f5ecd9;
+  padding: 2rem;
+  border-radius: 12px;
+  max-width: 500px;
+  width: 90%;
+  position: relative;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  font-family: "Merriweather", serif;
+}
+
+.modal-content h2 {
+  font-family: "Playfair Display", serif;
+  margin-bottom: 1rem;
+  color: #4b2e2b;
+}
+
+.modal-content p {
+  margin: 0.5rem 0;
+  color: #333;
+}
+
+.modal-close {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: #4b2e2b;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.8rem;
+  margin-top: 1.5rem;
+}
+
+.modal-buttons button {
+  flex: 1;
+  padding: 0.6rem 1rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.modal-buttons .btn-delete {
+  background-color: #b0413e;
+  color: white;
+}
+
+.modal-buttons .btn-delete:hover {
+  background-color: #8c2e2b;
+}
+
+.modal-buttons .btn-add {
+  background-color: #556b2f;
+  color: white;
+}
+
+.modal-buttons .btn-add:hover {
+  background-color: #3e4d20;
+}

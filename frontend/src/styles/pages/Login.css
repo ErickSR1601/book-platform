@@ -1,0 +1,65 @@
+.login-page {
+  min-height: 100vh;
+  background-color: #4e322e;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+.login-container {
+  width: 100%;
+  max-width: 500px;
+  padding: 2rem;
+  background-color: #fff9f0;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  font-family: "Merriweather", serif;
+}
+
+.login-container h1 {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  color: #4b2e2b;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.btn-submit {
+  padding: 0.7rem;
+  background-color: #556b2f;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  margin-top: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn-submit:hover {
+  background-color: #3e4d20;
+}
+
+.options-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 0rem;
+  margin-top: 0.5rem;
+}
+
+.options-row .btn-link,
+.options-row .back-button {
+  flex: 2;
+  background: none;
+  border: none;
+  color: #4b2e2b;
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 0.9rem;
+  text-align: center;
+}
