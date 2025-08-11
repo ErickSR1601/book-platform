@@ -1,15 +1,28 @@
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 import FormInput from "../components/FormInput";
+import API from "../api/Api"; 
 import "../styles/pages/Login.css";
-import BackButton from "../components/BackButton";
 
 function Login() {
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Here you can add the authentication logic
-    navigate("/");
+
+    try {
+      const { data } = await API.post("/auth/login", { email, password });
+
+      localStorage.setItem("userInfo", JSON.stringify(data));
+
+      navigate("/");
+    } catch (error) {
+      alert("Credenciales incorrectas");
+      console.error("Login error:", error);
+    }
   };
 
   return (
@@ -22,12 +35,16 @@ function Login() {
             name="email"
             placeholder="ejemplo@correo.com"
             type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
           <FormInput
             label="Contraseña"
             name="password"
             placeholder=""
             type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
           />
 
           <button type="submit" className="btn-submit">

@@ -1,11 +1,16 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import FormInput from "../components/FormInput";
 import BackButton from "../components/BackButton";
 import Navbar from "../components/Navbar";
+import API from "../api/Api";
 import "../styles/pages/RegisterBook.css";
 
 function RegisterBook() {
+  const navigate = useNavigate();
+
   const [form, setForm] = useState({
+    author: "",
     title: "",
     description: "",
     category: "",
@@ -18,10 +23,11 @@ function RegisterBook() {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const newErrors = {};
+    if (!form.author) newErrors.author = "El autor es obligatorio";
     if (!form.title) newErrors.title = "El título es obligatorio";
     if (!form.description)
       newErrors.description = "La descripción es obligatoria";
@@ -33,15 +39,37 @@ function RegisterBook() {
       return;
     }
 
-    // Aquí podrías enviar los datos a una API o guardarlos localmente
+    try {
+      const token = localStorage.getItem("token");
 
-    setForm({
-      title: "",
-      description: "",
-      category: "",
-      status: "",
-    });
-    setErrors({});
+      await API.post(
+        "/books/register",
+        {
+          author: form.author,
+          title: form.title,
+          description: form.description,
+          category: form.category,
+          status: form.status,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      setForm({
+        author: "",
+        title: "",
+        description: "",
+        category: "",
+        status: "",
+      });
+      navigate("/");
+    } catch (error) {
+      console.error("Error al guardar libro:", error.response?.data || error);
+      alert("Hubo un error al guardar el libro. Intenta nuevamente.");
+    }
   };
 
   return (
@@ -52,6 +80,16 @@ function RegisterBook() {
         <div className="register-book-container">
           <h1>Registrar nuevo libro</h1>
           <form onSubmit={handleSubmit} className="register-book-form">
+            <FormInput
+              label="Autor del libro"
+              name="author"
+              value={form.author}
+              onChange={handleChange}
+              required
+              placeholder="Ej. Antoine de Saint-Exupéry"
+              error={errors.title}
+            />
+
             <FormInput
               label="Título del libro"
               name="title"
