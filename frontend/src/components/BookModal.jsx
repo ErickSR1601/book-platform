@@ -1,7 +1,12 @@
 import "../styles/components/BookModal.css";
 
-function BookModal({ book, onClose }) {
+function BookModal({ book, onClose, onEdit, onDelete }) {
   if (!book) return null;
+
+  const handleDeleteClick = () => {
+    onDelete(book._id);
+    onClose();
+  };
 
   return (
     <div className="modal-overlay" onClick={onClose}>
@@ -24,12 +29,19 @@ function BookModal({ book, onClose }) {
           <strong>Estado:</strong> {book.status}
         </p>
         <p>
-          <strong>Fecha:</strong> {book.date}
+          <strong>Fecha:</strong>{" "}
+          {book.createdAt
+            ? new Date(book.createdAt).toLocaleDateString()
+            : "Fecha no disponible"}
         </p>
 
         <div className="modal-buttons">
-          <button className="btn-delete">Eliminar</button>
-          <button className="btn-add">Editar</button>
+          <button className="btn-delete" onClick={handleDeleteClick}>
+            Eliminar
+          </button>
+          <button className="btn-add" onClick={() => onEdit(book._id)}>
+            Editar
+          </button>
         </div>
       </div>
     </div>

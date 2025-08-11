@@ -2,9 +2,9 @@ const Book = require("../models/Book");
 
 // POST /api/books
 const createBook = async (req, res) => {
-  const { title, description, category, status } = req.body;
+  const { author, title, description, category, status } = req.body;
 
-  if (!title || !description || !category || !status) {
+  if (!author || !title || !description || !category || !status) {
     return res
       .status(400)
       .json({ message: "Todos los campos son obligatorios" });
@@ -12,6 +12,7 @@ const createBook = async (req, res) => {
 
   try {
     const newBook = await Book.create({
+      author,
       title,
       description,
       category,

@@ -1,11 +1,24 @@
+import { useNavigate } from "react-router-dom";
 import "../styles/components/BookCard.css";
 
-function BookCard({ book, onClick }) {
+function BookCard({ book, onClick, onDelete }) {
+  const navigate = useNavigate();
+
   const handleCardClick = (e) => {
     // Prevents clicking on buttons from triggering the modal
     if (e.target.tagName !== "BUTTON") {
       onClick(book);
     }
+  };
+
+  const handleEditClick = (e) => {
+    e.stopPropagation();
+    navigate(`/editar-libro/${book._id}`);
+  };
+
+  const handleDeleteClick = (e) => {
+    e.stopPropagation();
+    onDelete(book._id);
   };
 
   return (
@@ -15,11 +28,19 @@ function BookCard({ book, onClick }) {
       <p className="book-description">{book.description}</p>
       <p className="book-category">{book.category}</p>
       <p className="book-status">{book.status}</p>
-      <p className="book-date">{book.date}</p>
+      <p className="book-date">
+        {book.createdAt
+          ? new Date(book.createdAt).toLocaleDateString()
+          : "Fecha no disponible"}
+      </p>
 
       <div className="book-buttons">
-        <button className="btn-delete">Eliminar</button>
-        <button className="btn-add">Editar</button>
+        <button className="btn-delete" onClick={handleDeleteClick}>
+          Eliminar
+        </button>
+        <button className="btn-add" onClick={handleEditClick}>
+          Editar
+        </button>
       </div>
     </div>
   );

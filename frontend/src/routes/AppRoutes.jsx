@@ -15,7 +15,7 @@ function AppRoutes() {
         <Route path="/registro-usuario" element={<RegisterUser />} />
         <Route path="/login" element={<Login />} />
         <Route path="/recuperar-contrasena" element={<RecoverPassword />} />
-        <Route path="/editar-libro" element={<EditBook />} />
+        <Route path="/editar-libro/:id" element={<EditBook />} />
       </Routes>
     </Router>
   );

@@ -5,7 +5,7 @@ function BackButton({ to = "/", label = "← Volver" }) {
   const navigate = useNavigate();
 
   return (
-    <button className="back-button" onClick={() => navigate(to)}>
+    <button type="button" className="back-button" onClick={() => navigate(to)}>
       {label}
     </button>
   );
