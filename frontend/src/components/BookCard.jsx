@@ -13,7 +13,7 @@ function BookCard({ book, onClick, onDelete }) {
 
   const handleEditClick = (e) => {
     e.stopPropagation();
-    navigate(`/editar-libro/${book._id}`);
+    navigate(`/books/${book._id}/edit`);
   };
 
   const handleDeleteClick = (e) => {

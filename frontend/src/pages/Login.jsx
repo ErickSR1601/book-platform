@@ -55,7 +55,7 @@ function Login() {
             <button
               type="button"
               className="btn-link"
-              onClick={() => navigate("/registro-usuario")}
+              onClick={() => navigate("/users/new")}
             >
               ¿No tienes cuenta? Regístrate
             </button>

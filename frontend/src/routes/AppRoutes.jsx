@@ -10,12 +10,16 @@ function AppRoutes() {
   return (
     <Router>
       <Routes>
+        {/* Dashboard: lista de libros */}
         <Route path="/" element={<Dashboard />} />
-        <Route path="/registrar-libro" element={<RegisterBook />} />
-        <Route path="/registro-usuario" element={<RegisterUser />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/recuperar-contrasena" element={<RecoverPassword />} />
-        <Route path="/editar-libro/:id" element={<EditBook />} />
+        {/* CRUD de libros */}
+        <Route path="/books/new" element={<RegisterBook />} /> 
+        <Route path="/books/:id/edit" element={<EditBook />} />
+        {/* Usuarios */}
+        <Route path="/users/new" element={<RegisterUser />} /> 
+        {/* Autenticación */}
+        <Route path="/login" element={<Login />} /> 
+        <Route path="/password/recover" element={<RecoverPassword />} />
       </Routes>
     </Router>
   );
