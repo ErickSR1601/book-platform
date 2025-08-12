@@ -13,7 +13,7 @@ function Dashboard() {
   const navigate = useNavigate();
 
   const handleAddBook = () => {
-    navigate("/registrar-libro");
+    navigate("/books/new"); 
   };
 
   const fetchBooks = async () => {
@@ -35,7 +35,7 @@ function Dashboard() {
 
     try {
       const token = localStorage.getItem("token");
-      await api.delete(`/books/delete/${id}`, {
+      await api.delete(`/books/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -81,7 +81,7 @@ function Dashboard() {
           onClose={() => setSelectedBook(null)}
           onEdit={(id) => {
             setSelectedBook(null);
-            navigate(`/editar-libro/${id}`);
+            navigate(`/books/${id}/edit`);
           }}
           onDelete={handleDeleteBook} 
         />

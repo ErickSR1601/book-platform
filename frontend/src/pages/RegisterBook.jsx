@@ -43,7 +43,7 @@ function RegisterBook() {
       const token = localStorage.getItem("token");
 
       await API.post(
-        "/books/register",
+        "/books",
         {
           author: form.author,
           title: form.title,

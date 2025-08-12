@@ -9,7 +9,7 @@ const {
 
 // @route   POST /api/auth/register
 // @desc    Register new user
-router.post("/register", registerUser);
+router.post("/", registerUser);
 
 // @route   POST /api/auth/login
 // @desc    Start user session
@@ -17,6 +17,6 @@ router.post("/login", loginUser);
 
 // @route   PUT /api/auth/forgot-password
 // @desc    Reset password
-router.put("/forgot-password", forgotPassword);
+router.put("/password", forgotPassword);
 
 module.exports = router;

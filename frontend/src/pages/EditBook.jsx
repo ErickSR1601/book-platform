@@ -47,7 +47,7 @@ function EditBook() {
     e.preventDefault();
     try {
       const token = localStorage.getItem("token");
-      await API.put(`/books/edit/${id}`, form, {
+      await API.put(`/books/${id}`, form, {
         headers: { Authorization: `Bearer ${token}` },
       });
       alert("Libro actualizado correctamente");
