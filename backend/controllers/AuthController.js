@@ -65,12 +65,16 @@ const loginUser = async (req, res) => {
 
 // PUT /api/auth/forgot-password
 const forgotPassword = async (req, res) => {
-  const { email, newPassword } = req.body;
+  const { email, newPassword, confirmPassword } = req.body;
 
-  if (!email || !newPassword) {
+  if (!email || !newPassword || !confirmPassword) {
     return res
       .status(400)
-      .json({ message: "Correo y nueva contraseña son obligatorios" });
+      .json({ message: "Correo, nueva contraseña y confirmación son obligatorios" });
+  }
+
+  if (newPassword !== confirmPassword) {
+    return res.status(400).json({ message: "Las contraseñas no coinciden" });
   }
 
   try {

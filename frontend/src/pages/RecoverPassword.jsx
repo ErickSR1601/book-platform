@@ -1,16 +1,44 @@
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 import FormInput from "../components/FormInput";
 import BackButton from "../components/BackButton";
+import API from "../api/Api";
 import "../styles/pages/RecoverPassword.css";
 
 function RecoverPassword() {
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Here you could add logic for validating and updating the password.
+  const [email, setEmail] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
 
-    navigate("/login");
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    // Validaciones básicas
+    if (!email || !newPassword || !confirmPassword) {
+      alert("Todos los campos son obligatorios");
+      return;
+    }
+
+    if (newPassword !== confirmPassword) {
+      alert("Las contraseñas no coinciden");
+      return;
+    }
+
+    try {
+      await API.put("/auth/password", {
+        email,
+        newPassword,
+        confirmPassword,
+      });
+
+      alert("Contraseña actualizada correctamente");
+      navigate("/login");
+    } catch (error) {
+      console.error("Error al cambiar la contraseña:", error);
+      alert(error.response?.data?.message || "Error al cambiar la contraseña");
+    }
   };
 
   return (
@@ -23,18 +51,24 @@ function RecoverPassword() {
             name="email"
             type="email"
             placeholder="ejemplo@correo.com"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
           <FormInput
             label="Nueva contraseña"
             name="newPassword"
             type="password"
             placeholder=""
+            value={newPassword}
+            onChange={(e) => setNewPassword(e.target.value)}
           />
           <FormInput
             label="Confirme contraseña"
             name="confirmPassword"
             type="password"
             placeholder=""
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
           />
 
           <button type="submit" className="btn-submit">
