@@ -21,7 +21,7 @@ function EditBook() {
   useEffect(() => {
     const fetchBook = async () => {
       try {
-        const token = localStorage.getItem("token");
+        const token = sessionStorage.getItem("token");
         const { data } = await API.get(`/books/${id}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
@@ -46,7 +46,7 @@ function EditBook() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const token = localStorage.getItem("token");
+      const token = sessionStorage.getItem("token");
       await API.put(`/books/${id}`, form, {
         headers: { Authorization: `Bearer ${token}` },
       });

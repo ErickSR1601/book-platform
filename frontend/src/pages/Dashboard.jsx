@@ -18,7 +18,7 @@ function Dashboard() {
 
   const fetchBooks = async () => {
     try {
-      const token = localStorage.getItem("token");
+      const token = sessionStorage.getItem("token");
       const response = await api.get("/books", {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -34,7 +34,7 @@ function Dashboard() {
     if (!window.confirm("¿Seguro que quieres eliminar este libro?")) return;
 
     try {
-      const token = localStorage.getItem("token");
+      const token = sessionStorage.getItem("token");
       await api.delete(`/books/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,

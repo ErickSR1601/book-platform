@@ -16,7 +16,7 @@ function Login() {
     try {
       const { data } = await API.post("/auth/login", { email, password });
 
-      localStorage.setItem("userInfo", JSON.stringify(data));
+      sessionStorage.setItem("userInfo", JSON.stringify(data));
 
       navigate("/");
     } catch (error) {
