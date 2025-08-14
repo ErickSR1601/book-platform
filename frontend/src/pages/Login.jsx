@@ -62,7 +62,7 @@ function Login() {
             <button
               type="button"
               className="btn-link"
-              onClick={() => alert("Funcionalidad no implementada")}
+              onClick={() => navigate("/password/recover")}
             >
               ¿Olvidaste tu contraseña?
             </button>

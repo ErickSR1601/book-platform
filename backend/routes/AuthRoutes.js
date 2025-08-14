@@ -15,7 +15,7 @@ router.post("/", registerUser);
 // @desc    Start user session
 router.post("/login", loginUser);
 
-// @route   PUT /api/auth/forgot-password
+// @route   PUT /api/auth/password
 // @desc    Reset password
 router.put("/password", forgotPassword);
 
