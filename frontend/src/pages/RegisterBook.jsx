@@ -40,7 +40,7 @@ function RegisterBook() {
     }
 
     try {
-      const token = localStorage.getItem("token");
+      const token = sessionStorage.getItem("token");
 
       await API.post(
         "/books",

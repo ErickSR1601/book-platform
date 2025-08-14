@@ -6,7 +6,8 @@ function Navbar() {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    // Aquí puedes limpiar el estado, tokens, etc.
+    sessionStorage.removeItem("userInfo");
+    
     navigate("/login");
   };
 
