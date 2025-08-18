@@ -8,8 +8,8 @@ const bookSchema = new mongoose.Schema(
     category: { type: String, required: true },
     status: {
       type: String,
-      enum: ["Available", "Borrowed"],
-      default: "Available",
+      enum: ["Por leer", "Leyendo", "Leído", "Abandonado"],
+      default: "Por leer",
     },
     user: {
       type: mongoose.Schema.Types.ObjectId,
