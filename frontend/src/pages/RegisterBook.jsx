@@ -4,6 +4,7 @@ import FormInput from "../components/FormInput";
 import BackButton from "../components/BackButton";
 import Navbar from "../components/Navbar";
 import API from "../api/Api";
+import FormSelect from "../components/FormSelect";
 import "../styles/pages/RegisterBook.css";
 
 function RegisterBook() {
@@ -16,6 +17,13 @@ function RegisterBook() {
     category: "",
     status: "",
   });
+
+  const status = [
+    { value: "Por leer", label: "Por leer" },
+    { value: "Leyendo", label: "Leyendo" },
+    { value: "Leído", label: "Leído" },
+    { value: "Abandonado", label: "Abandonado" },
+  ];
 
   const [errors, setErrors] = useState({});
 
@@ -120,14 +128,14 @@ function RegisterBook() {
               error={errors.category}
             />
 
-            <FormInput
+            {/* Dropdown para el estado */}
+            <FormSelect
               label="Estado"
               name="status"
               value={form.status}
               onChange={handleChange}
+              options={status}
               required
-              placeholder="Ej. Leyendo, Finalizado, Pendiente"
-              error={errors.status}
             />
 
             <button type="submit" className="btn-submit">

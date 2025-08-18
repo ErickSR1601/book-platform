@@ -4,6 +4,7 @@ import FormInput from "../components/FormInput";
 import BackButton from "../components/BackButton";
 import Navbar from "../components/Navbar";
 import API from "../api/Api";
+import FormSelect from "../components/FormSelect";
 import "../styles/pages/EditBook.css";
 
 function EditBook() {
@@ -17,6 +18,13 @@ function EditBook() {
     category: "",
     status: "",
   });
+
+  const status = [
+    { value: "Por leer", label: "Por leer" },
+    { value: "Leyendo", label: "Leyendo" },
+    { value: "Leído", label: "Leído" },
+    { value: "Abandonado", label: "Abandonado" },
+  ];
 
   useEffect(() => {
     const fetchBook = async () => {
@@ -98,13 +106,13 @@ function EditBook() {
               onChange={handleChange}
               placeholder="Ej. Ficción, Tecnología"
             />
-            <FormInput
+            <FormSelect
               label="Estado"
               name="status"
-              type="text"
               value={form.status}
               onChange={handleChange}
-              placeholder="Ej. Leyendo, Finalizado, Pendiente"
+              options={status}
+              required
             />
 
             <button type="submit" className="btn-submit">
