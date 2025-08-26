@@ -34,8 +34,9 @@
 
 .book-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 240px));
   gap: 1.5rem;
   max-width: 1200px;
   margin: 0 auto;
+  justify-content: center;
 }

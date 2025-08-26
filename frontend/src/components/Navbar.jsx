@@ -11,11 +11,14 @@ function Navbar() {
     navigate("/login");
   };
 
+  const userInfo = JSON.parse(sessionStorage.getItem("userInfo"));
+  const firstName = userInfo?.name ? userInfo.name.split(" ")[0] : "Usuario";
+
   return (
     <nav className="navbar">
       <div className="navbar-left">
         <FaBook className="navbar-icon" />
-        <span className="navbar-username">Hola, Erick</span>
+        <span className="navbar-username">Hola, {firstName}</span>
       </div>
       <button className="logout-button" onClick={handleLogout}>
         Cerrar sesión
