@@ -1,0 +1,45 @@
+.footer {
+  background-color: #2b1f1c;
+  color: #f5ecd9;
+  text-align: center;
+  padding: 30px 15px;
+  font-family: "Merriweather", serif;
+}
+
+.footer-text {
+  font-size: 1.1rem;
+  margin-bottom: 5px;
+}
+
+.footer-subtext {
+  font-size: 0.9rem;
+  color: #d9c6b0;
+  margin-bottom: 15px;
+}
+
+.footer-icons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.footer-icons a {
+  color: #f5ecd9;
+  font-size: 1.5rem;
+  transition: color 0.3s ease;
+}
+
+.footer-icons a:hover {
+  color: #f4a261; /* un beige-anaranjado para resaltar */
+}
+
+.footer-copy {
+  font-size: 0.8rem;
+  color: #cbbfa8;
+}
+
+.highlight {
+  color: #f4a261;
+  font-weight: bold;
+}
