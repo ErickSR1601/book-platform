@@ -73,7 +73,7 @@ function RegisterBook() {
         category: "",
         status: "",
       });
-      navigate("/");
+      navigate("/dashboard");
     } catch (error) {
       console.error("Error al guardar libro:", error.response?.data || error);
       alert("Hubo un error al guardar el libro. Intenta nuevamente.");
@@ -128,7 +128,6 @@ function RegisterBook() {
               error={errors.category}
             />
 
-            {/* Dropdown para el estado */}
             <FormSelect
               label="Estado"
               name="status"
@@ -141,7 +140,7 @@ function RegisterBook() {
             <button type="submit" className="btn-submit">
               Guardar libro
             </button>
-            <BackButton to="/" label="Volver al Dashboard" />
+            <BackButton to="/dashboard" label="Volver al Dashboard" />
           </form>
         </div>
       </div>

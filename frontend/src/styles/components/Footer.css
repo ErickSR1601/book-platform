@@ -31,12 +31,7 @@
 }
 
 .footer-icons a:hover {
-  color: #f4a261; /* un beige-anaranjado para resaltar */
-}
-
-.footer-copy {
-  font-size: 0.8rem;
-  color: #cbbfa8;
+  color: #f4a261;
 }
 
 .highlight {

@@ -59,7 +59,7 @@ function EditBook() {
         headers: { Authorization: `Bearer ${token}` },
       });
       alert("Libro actualizado correctamente");
-      navigate("/");
+      navigate("/dashboard");
     } catch (error) {
       console.error("Error al actualizar libro:", error);
       alert("Error al actualizar libro");
@@ -120,7 +120,7 @@ function EditBook() {
             </button>
 
             <div className="button-row">
-              <BackButton to="/" label="Cancelar" />
+              <BackButton to="/dashboard" label="Cancelar" />
             </div>
           </form>
         </div>

@@ -23,7 +23,6 @@ function RegisterUser() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Validaciones simples
     const newErrors = {};
     if (!form.email) newErrors.email = "El correo es obligatorio";
     if (!form.name) newErrors.name = "El nombre es obligatorio";

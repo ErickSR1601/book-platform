@@ -18,7 +18,7 @@ function Login() {
 
       sessionStorage.setItem("userInfo", JSON.stringify(data));
 
-      navigate("/");
+      navigate("/dashboard");
     } catch (error) {
       alert("Credenciales incorrectas");
       console.error("Login error:", error);

@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/pages/Dashboard.css";
-
 import BookCard from "../components/BookCard";
 import BookModal from "../components/BookModal";
 import Navbar from "../components/Navbar";

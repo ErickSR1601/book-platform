@@ -33,14 +33,12 @@
   font-size: 0.85rem;
 }
 
-/* 🔹 Estilos generales del input */
 .form-input {
   display: flex;
   flex-direction: column;
   margin-bottom: 1rem;
 }
 
-/* 🔹 Estilos exclusivos para select */
 .custom-select {
   appearance: none;
   -webkit-appearance: none;
@@ -54,7 +52,6 @@
   position: relative;
 }
 
-/* 🔹 Flechita ▼ */
 .custom-select {
   background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='16' width='16' xmlns='http://www.w3.org/2000/svg'><polygon points='0,0 16,0 8,8'/></svg>");
   background-repeat: no-repeat;

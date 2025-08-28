@@ -4,8 +4,8 @@ import Card from "../components/LandingCard";
 import Footer from "../components/Footer";
 
 export default function LandingPage() {
-  const [modalImg, setModalImg] = useState(null); // imagen seleccionada
-  const [menuOpen, setMenuOpen] = useState(false); // menú móvil
+  const [modalImg, setModalImg] = useState(null); 
+  const [menuOpen, setMenuOpen] = useState(false); 
 
   const openModal = (imgSrc) => setModalImg(imgSrc);
   const closeModal = () => setModalImg(null);
@@ -35,7 +35,6 @@ export default function LandingPage() {
           <span />
         </button>
 
-        {/* Links (desktop) */}
         <ul className="landing-navbar-links">
           <li>
             <a href="#hero">Inicio</a>
@@ -51,7 +50,6 @@ export default function LandingPage() {
           </li>
         </ul>
 
-        {/* Buttons (desktop) */}
         <div className="landing-navbar-right">
           <button
             className="landing-btn signup"
@@ -64,7 +62,6 @@ export default function LandingPage() {
           </button>
         </div>
 
-        {/* Mobile overlay menu */}
         {menuOpen && (
           <div
             className="landing-mobile-menu"
@@ -115,7 +112,6 @@ export default function LandingPage() {
         )}
       </nav>
 
-      {/* Separador para que el contenido no quede debajo del navbar fijo */}
       <div className="landing-navbar-spacer" />
 
       <section className="hero" id="hero">
@@ -179,7 +175,6 @@ export default function LandingPage() {
           </div>
         </div>
 
-        {/* Modal */}
         {modalImg && (
           <div className="modal" onClick={closeModal}>
             <span className="close" onClick={closeModal}>

@@ -15,7 +15,6 @@ function RecoverPassword() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Validaciones básicas
     if (!email || !newPassword || !confirmPassword) {
       alert("Todos los campos son obligatorios");
       return;
