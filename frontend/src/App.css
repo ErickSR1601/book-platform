@@ -3,6 +3,10 @@
   padding: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 .App {
   background-color: #4b2e2b;
   min-height: 100vh;

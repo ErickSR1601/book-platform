@@ -77,7 +77,6 @@
   background-color: #3e4d20;
 }
 
-/* Responsivo */
 @media (max-width: 480px) {
   .book-card {
     max-width: 90%;

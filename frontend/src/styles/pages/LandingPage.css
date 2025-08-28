@@ -171,18 +171,16 @@
   width: 100%;
 }
 
-/* Ocultar/mostrar según tamaño */
 @media (max-width: 768px) {
   .landing-hamburger {
     display: block;
   }
   .landing-navbar-links,
   .landing-navbar-right {
-    display: none; /* ocultos en móvil: se usa el menú superpuesto */
+    display: none; 
   }
 }
 
-/* ====== Secciones existentes ====== */
 .hero {
   height: 100vh;
   display: flex;
@@ -358,7 +356,6 @@
   box-shadow: 0 12px 18px rgba(0, 0, 0, 0.25);
 }
 
-/* Responsive: tablets */
 @media (max-width: 1024px) {
   .screenshot-card {
     width: 48%;
@@ -369,14 +366,12 @@
   }
 }
 
-/* Responsive: móviles */
 @media (max-width: 768px) {
   .screenshot-card {
     width: 90%;
   }
 }
 
-/* Modal general */
 .modal {
   display: flex;
   justify-content: center;
@@ -392,19 +387,9 @@
 }
 
 .modal-content {
-  max-width: 90%;
+  max-width: 75%;
   max-height: 90%;
   border-radius: 10px;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 
-.close {
-  position: fixed;
-  top: 20px;
-  right: 30px;
-  color: #f5ecd9;
-  font-size: 40px;
-  font-weight: bold;
-  cursor: pointer;
-  z-index: 1000;
-}

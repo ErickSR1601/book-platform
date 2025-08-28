@@ -1,4 +1,3 @@
-import React from "react";
 import "../styles/components/FormInput.css"; 
 
 function FormSelect({ label, name, value, onChange, options, required }) {
