@@ -9,7 +9,7 @@ const {
   deleteBook,
 } = require("../controllers/BookController");
 
-const protect = require("../middlewares/authMiddleware");
+const protect = require("../middlewares/AuthMiddlewares");
 
 // @route   POST /api/books
 // @desc    Create a new book
