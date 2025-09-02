@@ -11,7 +11,7 @@
   z-index: 1000;
 }
 
-.modal-content {
+.modal-content-book {
   background-color: #f5ecd9;
   padding: 2rem;
   border-radius: 12px;
@@ -22,13 +22,13 @@
   font-family: "Merriweather", serif;
 }
 
-.modal-content h2 {
+.modal-content-book h2 {
   font-family: "Playfair Display", serif;
   margin-bottom: 1rem;
   color: #4b2e2b;
 }
 
-.modal-content p {
+.modal-content-book p {
   margin: 0.5rem 0;
   color: #333;
 }

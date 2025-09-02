@@ -1,10 +1,12 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { FaBook } from "react-icons/fa";
+import { FaBook, FaBars, FaTimes } from "react-icons/fa";
 import api from "../api/Api";
 import "../styles/components/Navbar.css";
 
 function Navbar() {
   const navigate = useNavigate();
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const handleLogout = () => {
     sessionStorage.removeItem("userInfo");
@@ -48,13 +50,34 @@ function Navbar() {
         <FaBook className="navbar-icon" />
         <span className="navbar-username">Hola, {firstName}</span>
       </div>
-      <div className="navbar-buttons">
+
+      <div className="navbar-buttons desktop-only">
         <button className="logout-button" onClick={handleLogout}>
           Cerrar sesión
         </button>
         <button className="delete-button" onClick={handleDeleteAccount}>
           Eliminar cuenta
         </button>
+      </div>
+
+      <div className="mobile-only">
+        <button
+          className="hamburger-button"
+          onClick={() => setMenuOpen(!menuOpen)}
+        >
+          {menuOpen ? <FaTimes /> : <FaBars />}
+        </button>
+
+        {menuOpen && (
+          <div className="mobile-menu">
+            <button className="logout-button" onClick={handleLogout}>
+              Cerrar sesión
+            </button>
+            <button className="delete-button" onClick={handleDeleteAccount}>
+              Eliminar cuenta
+            </button>
+          </div>
+        )}
       </div>
     </nav>
   );
