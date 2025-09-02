@@ -68,9 +68,9 @@ const forgotPassword = async (req, res) => {
   const { email, newPassword, confirmPassword } = req.body;
 
   if (!email || !newPassword || !confirmPassword) {
-    return res
-      .status(400)
-      .json({ message: "Correo, nueva contraseña y confirmación son obligatorios" });
+    return res.status(400).json({
+      message: "Correo, nueva contraseña y confirmación son obligatorios",
+    });
   }
 
   if (newPassword !== confirmPassword) {
@@ -96,8 +96,32 @@ const forgotPassword = async (req, res) => {
   }
 };
 
+// DELETE /api/auth/delete
+const deleteUser = async (req, res) => {
+  const Book = require("../models/Book");
+  try {
+    const userId = req.user._id;
+
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json({ message: "Usuario no encontrado" });
+    }
+    await Book.deleteMany({ user: userId });
+
+    await user.deleteOne();
+
+    res
+      .status(200)
+      .json({ message: "Usuario y sus libros eliminados correctamente" });
+  } catch (error) {
+    console.error("Error al eliminar usuario:", error);
+    res.status(500).json({ message: "Error del servidor" });
+  }
+};
+
 module.exports = {
   registerUser,
   loginUser,
   forgotPassword,
+  deleteUser,
 };

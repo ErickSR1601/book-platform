@@ -42,7 +42,7 @@ function RegisterUser() {
 
       sessionStorage.setItem("token", data.token);
 
-      navigate("/");
+      navigate("/login");
     } catch (error) {
       console.error(
         "Error al registrar usuario:",

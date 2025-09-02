@@ -50,3 +50,26 @@
   background-color: #e5d4c0;
   color: #2e1d1b;
 }
+
+.navbar-buttons {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.delete-button {
+  padding: 0.5rem 1rem;
+  background-color: #e20404;
+  color: #fff9f0;
+  font-family: "Merriweather", serif;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.delete-button:hover {
+  background-color: #cc0000;
+  transform: scale(1.05);
+}
