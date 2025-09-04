@@ -10,7 +10,7 @@ function BookModal({ book, onClose, onEdit, onDelete }) {
 
   return (
     <div className="modal-overlay" onClick={onClose}>
-      <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+      <div className="modal-content-book" onClick={(e) => e.stopPropagation()}>
         <button className="modal-close" onClick={onClose}>
           ✖
         </button>
