@@ -220,6 +220,23 @@
   background-color: #3e4d20;
 }
 
+.btn.guest {
+  background-color: transparent;
+  color: #fff;
+  border: 2px solid #fff;
+  margin-left: 15px;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.btn.guest:hover {
+  background-color: #fff;
+  color: #4b2e2b;
+}
+
 .features {
   min-height: 50vh;
   display: flex;
@@ -392,4 +409,3 @@
   border-radius: 10px;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
-

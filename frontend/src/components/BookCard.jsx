@@ -4,6 +4,9 @@ import "../styles/components/BookCard.css";
 function BookCard({ book, onClick, onDelete }) {
   const navigate = useNavigate();
 
+  const userInfo = JSON.parse(sessionStorage.getItem("userInfo"));
+  const userRole = userInfo?.role;
+
   const handleCardClick = (e) => {
     // Prevents clicking on buttons from triggering the modal
     if (e.target.tagName !== "BUTTON") {
@@ -35,8 +38,12 @@ function BookCard({ book, onClick, onDelete }) {
       </p>
 
       <div className="book-buttons">
-        <button className="btn-delete" onClick={handleDeleteClick}>
-          Eliminar
+        <button
+          className="btn-delete"
+          onClick={handleDeleteClick}
+          disabled={userRole === "guest"}
+        >
+          {userRole === "guest" ? "No disponible" : "Eliminar"}
         </button>
         <button className="btn-add" onClick={handleEditClick}>
           Editar

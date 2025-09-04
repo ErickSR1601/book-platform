@@ -6,6 +6,7 @@ const {
   loginUser,
   forgotPassword,
   deleteUser,
+  loginGuest,
 } = require("../controllers/AuthController");
 
 const protect = require("../middlewares/AuthMiddleware");
@@ -17,6 +18,10 @@ router.post("/", registerUser);
 // @route   POST /api/auth/login
 // @desc    Start user session
 router.post("/login", loginUser);
+
+// @route   POST /api/auth/guest
+// @desc    Start guest session (limited access)
+router.post("/guest", loginGuest);
 
 // @route   PUT /api/auth/password
 // @desc    Reset password

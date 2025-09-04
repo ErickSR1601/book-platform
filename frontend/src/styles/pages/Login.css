@@ -45,11 +45,27 @@
   background-color: #3e4d20;
 }
 
+.btn-guest {
+  padding: 0.7rem;
+  background-color: transparent;
+  color: #4b2e2b;
+  border: 2px solid #4b2e2b;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-guest:hover {
+  background-color: #4b2e2b;
+  color: #fff;
+}
+
 .options-row {
   display: flex;
   justify-content: space-between;
   gap: 0rem;
-  margin-top: 0.5rem;
+  margin-top: 1rem;
 }
 
 .options-row .btn-link,

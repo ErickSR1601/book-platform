@@ -2,10 +2,12 @@ import { useState } from "react";
 import "../styles/pages/LandingPage.css";
 import Card from "../components/LandingCard";
 import Footer from "../components/Footer";
+import API from "../api/Api";
+import { useNavigate } from "react-router-dom";
 
 export default function LandingPage() {
-  const [modalImg, setModalImg] = useState(null); 
-  const [menuOpen, setMenuOpen] = useState(false); 
+  const [modalImg, setModalImg] = useState(null);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const openModal = (imgSrc) => setModalImg(imgSrc);
   const closeModal = () => setModalImg(null);
@@ -16,6 +18,27 @@ export default function LandingPage() {
   };
 
   const closeMenuAndAnchor = () => setMenuOpen(false);
+
+  const navigate = useNavigate();
+
+  const handleGuestLogin = async () => {
+    try {
+      const { data } = await API.post("/auth/login", {
+        email: "guest@bookplatform.com",
+        password: "123456", // contraseña de tu usuario guest
+      });
+
+      sessionStorage.setItem("userInfo", JSON.stringify(data));
+      sessionStorage.setItem("token", data.token);
+      navigate("/dashboard");
+    } catch (error) {
+      console.error(
+        "Error al entrar como invitado:",
+        error.response?.data || error
+      );
+      alert("No se pudo entrar como invitado.");
+    }
+  };
 
   return (
     <div>
@@ -106,6 +129,12 @@ export default function LandingPage() {
                 >
                   Iniciar sesión
                 </button>
+                <button
+                  className="landing-btn guest"
+                  onClick={handleGuestLogin}
+                >
+                  Invitado
+                </button>
               </div>
             </div>
           </div>
@@ -121,6 +150,9 @@ export default function LandingPage() {
           <a href="#features" className="btn" onClick={closeMenuAndAnchor}>
             Explorar
           </a>
+          <button className="btn guest" onClick={handleGuestLogin}>
+            Entrar como invitado
+          </button>
         </div>
       </section>
 

@@ -32,7 +32,8 @@ const registerUser = async (req, res) => {
       _id: newUser._id,
       name: newUser.name,
       email: newUser.email,
-      token: generateToken(newUser._id),
+      role: newUser.role,
+      token: generateToken({ id: newUser._id, role: newUser.role }),
     });
   } catch (error) {
     console.error("Error al registrar usuario:", error);
@@ -55,13 +56,15 @@ const loginUser = async (req, res) => {
       _id: user._id,
       name: user.name,
       email: user.email,
-      token: generateToken(user._id),
+      role: user.role,
+      token: generateToken({ id: user._id, role: user.role }),
     });
   } catch (error) {
     console.error("Error al iniciar sesión:", error);
     res.status(500).json({ message: "Error del servidor" });
   }
 };
+
 
 // PUT /api/auth/forgot-password
 const forgotPassword = async (req, res) => {
@@ -119,9 +122,30 @@ const deleteUser = async (req, res) => {
   }
 };
 
+// POST /api/auth/guest
+const loginGuest = async (req, res) => {
+  try {
+    // Generar token especial con id y role de invitado
+    const guestPayload = { id: "guest", role: "guest" };
+
+    res.status(200).json({
+      _id: "guest",
+      name: "Invitado",
+      email: "invitado@bookplatform.com",
+      role: "guest",
+      token: generateToken(guestPayload),
+    });
+  } catch (error) {
+    console.error("Error en el modo invitado:", error);
+    res.status(500).json({ message: "Error del servidor" });
+  }
+};
+
+
 module.exports = {
   registerUser,
   loginUser,
   forgotPassword,
   deleteUser,
+  loginGuest,
 };

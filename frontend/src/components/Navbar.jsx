@@ -52,9 +52,11 @@ function Navbar() {
         <button className="logout-button" onClick={handleLogout}>
           Cerrar sesión
         </button>
-        <button className="delete-button" onClick={handleDeleteAccount}>
-          Eliminar cuenta
-        </button>
+        {userInfo?.role !== "guest" && (
+          <button className="delete-button" onClick={handleDeleteAccount}>
+            Eliminar cuenta
+          </button>
+        )}
       </div>
     </nav>
   );

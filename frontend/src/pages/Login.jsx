@@ -25,6 +25,25 @@ function Login() {
     }
   };
 
+  const handleGuestLogin = async () => {
+    try {
+      const { data } = await API.post("/auth/login", {
+        email: "guest@bookplatform.com",
+        password: "123456",
+      });
+
+      sessionStorage.setItem("userInfo", JSON.stringify(data));
+      sessionStorage.setItem("token", data.token);
+      navigate("/dashboard");
+    } catch (error) {
+      console.error(
+        "Error al entrar como invitado:",
+        error.response?.data || error
+      );
+      alert("No se pudo entrar como invitado.");
+    }
+  };
+
   return (
     <div className="login-page">
       <div className="login-container">
@@ -49,6 +68,14 @@ function Login() {
 
           <button type="submit" className="btn-submit">
             Ingresar
+          </button>
+
+          <button
+            type="button"
+            className="btn-guest"
+            onClick={handleGuestLogin}
+          >
+            Entrar como invitado
           </button>
 
           <div className="options-row">
