@@ -19,12 +19,21 @@ function EditBook() {
     status: "",
   });
 
+  const [userRole, setUserRole] = useState("");
+
   const status = [
     { value: "Por leer", label: "Por leer" },
     { value: "Leyendo", label: "Leyendo" },
     { value: "Leído", label: "Leído" },
     { value: "Abandonado", label: "Abandonado" },
   ];
+
+  useEffect(() => {
+    const userInfo = JSON.parse(sessionStorage.getItem("userInfo"));
+    if (userInfo?.role) {
+      setUserRole(userInfo.role);
+    }
+  }, []);
 
   useEffect(() => {
     const fetchBook = async () => {
@@ -115,8 +124,14 @@ function EditBook() {
               required
             />
 
-            <button type="submit" className="btn-submit">
-              Guardar cambios
+            <button
+              type="submit"
+              className="btn-submit"
+              disabled={userRole === "guest"}
+            >
+              {userRole === "guest"
+                ? "Los invitados no pueden guardar cambios"
+                : "Guardar cambios"}
             </button>
 
             <div className="button-row">

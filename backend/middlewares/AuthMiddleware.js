@@ -14,16 +14,26 @@ const protect = async (req, res, next) => {
 
       const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
-      req.user = await User.findById(decoded.id).select("-password");
+      const user = await User.findById(decoded.id).select("-password");
 
-      return next();
+      if (!user) {
+        return res.status(401).json({ message: "Usuario no encontrado" });
+      }
+
+      if (user.role === "guest" && req.method.toUpperCase() !== "GET") {
+        return res
+          .status(403)
+          .json({ message: "Los invitados solo pueden ver datos" });
+      }
+
+      req.user = user;
+
+      next();
     } catch (error) {
       console.error("Error al verificar el token:", error);
       return res.status(401).json({ message: "No autorizado, token inválido" });
     }
-  }
-
-  if (!token) {
+  } else {
     return res
       .status(401)
       .json({ message: "No autorizado, token no proporcionado" });

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import FormInput from "../components/FormInput";
 import BackButton from "../components/BackButton";
@@ -26,6 +26,14 @@ function RegisterBook() {
   ];
 
   const [errors, setErrors] = useState({});
+  const [userRole, setUserRole] = useState("");
+
+  useEffect(() => {
+    const userInfo = JSON.parse(sessionStorage.getItem("userInfo"));
+    if (userInfo?.role) {
+      setUserRole(userInfo.role);
+    }
+  }, []);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -33,7 +41,6 @@ function RegisterBook() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     const newErrors = {};
     if (!form.author) newErrors.author = "El autor es obligatorio";
     if (!form.title) newErrors.title = "El título es obligatorio";
@@ -95,7 +102,7 @@ function RegisterBook() {
               onChange={handleChange}
               required
               placeholder="Ej. Antoine de Saint-Exupéry"
-              error={errors.title}
+              error={errors.author}
             />
 
             <FormInput
@@ -137,9 +144,16 @@ function RegisterBook() {
               required
             />
 
-            <button type="submit" className="btn-submit">
-              Guardar libro
+            <button
+              type="submit"
+              className="btn-submit"
+              disabled={userRole === "guest"}
+            >
+              {userRole === "guest"
+                ? "Los invitados no pueden guardar libros"
+                : "Guardar libro"}
             </button>
+
             <BackButton to="/dashboard" label="Volver al Dashboard" />
           </form>
         </div>

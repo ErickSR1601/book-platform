@@ -215,6 +215,23 @@
   background-color: #3e4d20;
 }
 
+.btn.guest {
+  background-color: transparent;
+  color: #fff;
+  border: 2px solid #fff;
+  margin-left: 15px;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.btn.guest:hover {
+  background-color: #fff;
+  color: #4b2e2b;
+}
+
 .features {
   min-height: 50vh;
   display: flex;
@@ -429,16 +446,4 @@
   border-radius: 10px;
   object-fit: contain;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
-}
-
-/* Botón cerrar */
-.close {
-  position: absolute;
-  top: 20px;
-  right: 25px;
-  color: #fff;
-  font-size: 2rem;
-  font-weight: bold;
-  cursor: pointer;
-  z-index: 1000;
 }
