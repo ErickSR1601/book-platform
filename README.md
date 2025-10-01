@@ -43,7 +43,7 @@ Allows users to register, log in, add books, edit them, delete them, and view th
 ┣ 📄 package.json
 ```
 
-### Frontend (`/backend`)
+### Backend (`/backend`)
 
 ```bash
 backend/
