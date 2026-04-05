@@ -6,6 +6,11 @@ Allows users to register, log in, add books, edit them, delete them, and view th
 
 ---
 
+## Live Demo
+🔗 https://book-platform-mauve.vercel.app/
+
+> Guest mode available — no registration required to explore the app.
+
 ## 🚀 Technologies Used
 
 ### Frontend
@@ -67,7 +72,7 @@ backend/
 ### 1️⃣ Clone the repository
 
 ```bash
-git clone <https://github.com/tuusuario/book-platform.git>
+git clone https://github.com/ErickSR1601/book-platform.git
 cd book-platform
 ```
 
